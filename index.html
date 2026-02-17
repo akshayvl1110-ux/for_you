@@ -1,1 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Anniversary ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+:root{
+--dark-bg: #0f0f14;
+--light-bg: #fff0f5;
+--primary: #ff4b6e;
+--secondary: #ff8fab;
+--dark-text: white;
+--light-text: #2b2b2b;
+}
+
+body{
+margin:0;
+font-family: "Segoe UI", sans-serif;
+transition:0.6s;
+overflow:hidden;
+}
+
+.dark{
+background: radial-gradient(circle at center, #1a1a22, #0f0f14);
+color: var(--dark-text);
+}
+
+.light{
+background: linear-gradient(135deg,#ffd1dc,#fff0f5);
+color: var(--light-text);
+}
+
+.screen{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+opacity:0;
+pointer-events:none;
+transition:1s;
+text-align:center;
+padding:20px;
+box-sizing:border-box;
+}
+
+.active{
+opacity:1;
+pointer-events:auto;
+}
+
+h1{
+font-size:38px;
+margin-bottom:10px;
+}
+
+p{
+max-width:600px;
+font-size:18px;
+line-height:1.6;
+}
+
+button{
+padding:12px 28px;
+border:none;
+border-radius:30px;
+background: linear-gradient(45deg,#ff4b6e,#ff8fab);
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:20px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.theme-btn{
+position:absolute;
+top:20px;
+right:20px;
+background:transparent;
+border:2px solid var(--primary);
+}
+
+/* Photobooth strip */
+
+.photostrip-container{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding:20px;
+}
+
+.photostrip{
+background:black;
+padding:15px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+.photostrip img{
+width:180px;
+height:180px;
+object-fit:cover;
+margin-bottom:10px;
+border-radius:10px;
+display:block;
+}
+
+.caption{
+color:white;
+font-size:14px;
+text-align:center;
+opacity:0.9;
+}
+
+/* floating hearts */
+
+.heart{
+position:absolute;
+color:#ff8fab;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body class="dark">
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+<button class="theme-btn" onclick="toggleTheme()">Toggle Theme ❤️</button>
+
+<!-- SCREEN 1 -->
+
+<div class="screen active" id="screen1">
+
+<h1>Welcome My Love ❤️</h1>
+
+<p>
+I created something special just for you.
+</p>
+
+<button onclick="nextScreen(2)">Enter</button>
+
+</div>
+
+<!-- SCREEN 2 -->
+
+<div class="screen" id="screen2">
+
+<h1>My Letter To You ❤️</h1>
+
+<p>
+From the moment you entered my life,
+everything became more beautiful.
+
+You are my happiness,
+my peace,
+and my forever.
+
+Happy Anniversary ❤️
+</p>
+
+<button onclick="nextScreen(3)">See Our Journey</button>
+
+</div>
+
+<!-- SCREEN 3 PHOTOBOOTH -->
+
+<div class="screen" id="screen3">
+
+<h1>Our Journey Through The Years ❤️</h1>
+
+<div class="photostrip-container">
+
+<div class="photostrip">
+<img src="photo1.jpg">
+<div class="caption">Our first selfie together ❤️</div>
+</div>
+
+<div class="photostrip">
+<img src="photo2.jpg">
+<div class="caption">2022 ❤️</div>
+</div>
+
+<div class="photostrip">
+<img src="photo3.jpg">
+<div class="caption">2023 ❤️</div>
+</div>
+
+<div class="photostrip">
+<img src="photo4.jpg">
+<div class="caption">2024 ❤️</div>
+</div>
+
+<div class="photostrip">
+<img src="photo5.jpg">
+<div class="caption">2025 ❤️</div>
+</div>
+
+<div class="photostrip">
+<img src="photo6.jpg">
+<div class="caption">2026 ❤️</div>
+</div>
+
+</div>
+
+<button onclick="nextScreen(4)">Final Message</button>
+
+</div>
+
+<!-- SCREEN 4 FINAL -->
+
+<div class="screen" id="screen4">
+
+<h1>Forever With You ❤️</h1>
+
+<p>
+Through every year,
+every memory,
+every moment…
+
+I will always love you.
+
+Forever and always ❤️
+</p>
+
+</div>
+
+<script>
+
+let musicStarted=false;
+
+function nextScreen(num){
+
+document.querySelectorAll(".screen").forEach(s=>{
+s.classList.remove("active");
+});
+
+document.getElementById("screen"+num).classList.add("active");
+
+if(!musicStarted){
+document.getElementById("music").play();
+musicStarted=true;
+}
+
+}
+
+function toggleTheme(){
+
+document.body.classList.toggle("dark");
+document.body.classList.toggle("light");
+
+}
+
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+setInterval(createHeart,400);
+
+</script>
+
+</body>
+</html>
 
