@@ -4,7 +4,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f0a1f">
+<meta name="theme-color" content="#8b0000">
 
 <title>Happy Anniversary ❤️</title>
 
@@ -19,16 +19,16 @@ box-sizing:border-box;
 font-family:'Segoe UI',sans-serif;
 }
 
-/* DARK ROMANTIC BACKGROUND */
+/* DARK RED ROMANTIC BACKGROUND */
 
 body{
 height:100vh;
 overflow:hidden;
-background: linear-gradient(135deg,#0b0617,#1a0f2e,#140a26);
-color:#e6e6e6;
+background: linear-gradient(135deg,#1a0000,#4d0000,#0d0000);
+color:#f5e6e6;
 }
 
-/* SCREEN LAYOUT */
+/* SCREEN */
 
 .screen{
 position:absolute;
@@ -49,13 +49,13 @@ pointer-events:none;
 /* CARD */
 
 .card{
-background: rgba(20,15,35,0.85);
+background: rgba(20,0,0,0.85);
 border-radius:18px;
 padding:24px;
 width:100%;
 max-width:420px;
 text-align:center;
-box-shadow:0 0 25px rgba(0,0,0,0.6);
+box-shadow:0 0 30px rgba(120,0,0,0.6);
 }
 
 /* TEXT */
@@ -69,7 +69,7 @@ color:#ffffff;
 p{
 font-size:15px;
 line-height:1.6;
-color:#cfcfe6;
+color:#f0d6d6;
 }
 
 /* BUTTON */
@@ -80,14 +80,15 @@ padding:12px;
 border:none;
 border-radius:25px;
 font-size:15px;
-background:#2a1f47;
+background: linear-gradient(45deg,#660000,#990000);
 color:white;
 cursor:pointer;
 width:100%;
+transition:0.3s;
 }
 
 button:hover{
-background:#3a2a66;
+background: linear-gradient(45deg,#990000,#cc0000);
 }
 
 /* PHOTO COLLAGE */
@@ -102,13 +103,13 @@ margin-top:15px;
 /* PHOTO CARD */
 
 .photo{
-background:#0f0a1f;
+background:#140000;
 border-radius:12px;
 padding:8px;
 text-align:center;
 }
 
-/* FIXED COLLAGE FRAME */
+/* FIXED FRAME */
 
 .photo-frame{
 width:100%;
@@ -129,10 +130,10 @@ display:block;
 
 .caption{
 font-size:12px;
-color:#b8b8d4;
+color:#e6b3b3;
 }
 
-/* MOBILE OPTIMIZATION */
+/* MOBILE */
 
 @media (max-width:480px){
 
@@ -169,7 +170,7 @@ font-size:14px;
 
 <h1>Happy Anniversary ❤️</h1>
 
-<p>This is for you</p>
+<p>I made this for you, my love.</p>
 
 <button onclick="nextScreen('welcome','letter')">
 Open
@@ -185,17 +186,26 @@ Open
 
 <div class="card">
 
-<h1>My Love Letter</h1>
+<h1>My Love Letter ❤️</h1>
 
 <p>
 
-From our first selfie to every year we've shared,<br><br>
+Happy Anniversary, my love ❤️<br><br>
 
-You have been my peace,<br>
-my happiness,<br>
-and my forever.<br><br>
+First of all, thank you for putting up with me through all these years 🤭 These four years will always be very special to me. We have fought, we have missed each other, we have laughed, and we have gone through both beautiful days and difficult ones. We have spent time together, created memories, supported each other, and experienced so many things—both planned and unexpected. And through everything, we still chose each other.
 
-Every moment with you is a memory I treasure.
+I am truly grateful and happy to have you in my life. You inspire me in ways you may not even realize. Thank you for your endless patience with me. I know I am still a work in progress, and it means everything that you continue to stand beside me.
+
+I’m deeply sorry for the times I hurt you or upset you. Please know it was never my intention. Thank you for making our journey so meaningful and beautiful. You make every moment special just by being yourself.
+
+I know I am not perfect, but I am trying to become a better person—for myself, and for you—because you mean so much to me.
+
+I love you, now and always.
+
+Yours forever,
+Akshay<br><br>
+
+No matter what the future holds, I know one thing for certain — I will always love you.
 
 </p>
 
@@ -207,13 +217,13 @@ Our Memories
 
 </div>
 
-<!-- PHOTO BOOTH SCREEN -->
+<!-- PHOTO BOOTH -->
 
 <div id="photos" class="screen hidden">
 
 <div class="card">
 
-<h1>Our Story</h1>
+<h1>Our Story 📸</h1>
 
 <div class="photogrid">
 
@@ -274,7 +284,7 @@ Photo 6 is 2026
 </div>
 
 <button onclick="nextScreen('photos','final')">
-Final Message
+Final Message ❤️
 </button>
 
 </div>
@@ -287,7 +297,7 @@ Final Message
 
 <div class="card">
 
-<h1>I Love You</h1>
+<h1>I Love You ❤️</h1>
 
 <p>
 
