@@ -2,36 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Our Anniversary ❤️</title>
+<title>Happy Anniversary ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
-:root{
---dark-bg: #0f0f14;
---light-bg: #fff0f5;
---primary: #ff4b6e;
---secondary: #ff8fab;
---dark-text: white;
---light-text: #2b2b2b;
-}
+/* ===== GLOBAL ===== */
 
 body{
 margin:0;
-font-family: "Segoe UI", sans-serif;
-transition:0.6s;
+font-family:"Segoe UI",sans-serif;
 overflow:hidden;
+color:white;
 }
 
+/* ===== ROMANTIC BRIGHT GRADIENT ===== */
+
 .dark{
-background: radial-gradient(circle at center, #1a1a22, #0f0f14);
-color: var(--dark-text);
+background: linear-gradient(
+135deg,
+#ff758c,
+#ff7eb3,
+#ff8fab,
+#ffc2d1,
+#ffd1dc
+);
+background-size:400% 400%;
+animation:romanticGradient 12s ease infinite;
+}
+
+@keyframes romanticGradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 .light{
-background: linear-gradient(135deg,#ffd1dc,#fff0f5);
-color: var(--light-text);
+background: linear-gradient(135deg,#ffffff,#ffd6e0);
+color:#333;
 }
+
+/* ===== SCREEN SYSTEM ===== */
 
 .screen{
 position:absolute;
@@ -49,27 +60,30 @@ padding:20px;
 box-sizing:border-box;
 }
 
-.active{
+.screen.active{
 opacity:1;
 pointer-events:auto;
 }
 
+/* ===== TEXT ===== */
+
 h1{
-font-size:38px;
+font-size:48px;
 margin-bottom:10px;
 }
 
 p{
+font-size:20px;
 max-width:600px;
-font-size:18px;
-line-height:1.6;
 }
 
+/* ===== BUTTON ===== */
+
 button{
-padding:12px 28px;
+padding:14px 32px;
 border:none;
 border-radius:30px;
-background: linear-gradient(45deg,#ff4b6e,#ff8fab);
+background:linear-gradient(45deg,#ff4b6e,#ff8fab);
 color:white;
 font-size:16px;
 cursor:pointer;
@@ -81,51 +95,69 @@ button:hover{
 transform:scale(1.1);
 }
 
+/* ===== THEME BUTTON ===== */
+
 .theme-btn{
 position:absolute;
 top:20px;
 right:20px;
-background:transparent;
-border:2px solid var(--primary);
+background:white;
+color:#ff4b6e;
 }
 
-/* Photobooth strip */
+/* ===== COLLAGE ===== */
 
-.photostrip-container{
-display:flex;
+.collage{
+display:grid;
+grid-template-columns:repeat(3,220px);
+grid-template-rows:repeat(2,220px);
 gap:20px;
-overflow-x:auto;
-padding:20px;
+margin-top:20px;
 }
 
-.photostrip{
-background:black;
-padding:15px;
+.photo{
+position:relative;
 border-radius:20px;
-box-shadow:0 0 25px rgba(0,0,0,0.5);
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+transform:rotate(calc(-5deg + 10deg * var(--r)));
+transition:0.4s;
 }
 
-.photostrip img{
-width:180px;
-height:180px;
+.photo:hover{
+transform:scale(1.1) rotate(0deg);
+z-index:10;
+}
+
+.photo img{
+width:100%;
+height:100%;
 object-fit:cover;
-margin-bottom:10px;
-border-radius:10px;
-display:block;
 }
 
-.caption{
-color:white;
+.photo span{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+background:rgba(0,0,0,0.6);
+padding:6px;
 font-size:14px;
-text-align:center;
-opacity:0.9;
 }
 
-/* floating hearts */
+/* random rotations */
+
+.photo1{--r:0.1;}
+.photo2{--r:0.3;}
+.photo3{--r:0.5;}
+.photo4{--r:0.7;}
+.photo5{--r:0.9;}
+.photo6{--r:0.2;}
+
+/* ===== FLOATING HEARTS ===== */
 
 .heart{
 position:absolute;
-color:#ff8fab;
 animation:float 6s linear infinite;
 }
 
@@ -149,79 +181,80 @@ opacity:0;
 <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<button class="theme-btn" onclick="toggleTheme()">Toggle Theme ❤️</button>
+<button class="theme-btn" onclick="toggleTheme()">❤️</button>
 
-<!-- SCREEN 1 -->
+<!-- ===== WELCOME SCREEN ===== -->
 
 <div class="screen active" id="screen1">
 
 <h1>Welcome My Love ❤️</h1>
 
 <p>
-I created something special just for you.
+I made this for you.<br>
+Click below to begin our journey.
 </p>
 
 <button onclick="nextScreen(2)">Enter</button>
 
 </div>
 
-<!-- SCREEN 2 -->
+<!-- ===== LETTER SCREEN ===== -->
 
 <div class="screen" id="screen2">
 
 <h1>My Letter To You ❤️</h1>
 
 <p>
-From the moment you entered my life,
-everything became more beautiful.
+From the moment you entered my life,<br>
+everything became more beautiful.<br><br>
 
-You are my happiness,
-my peace,
-and my forever.
+You are my happiness,<br>
+my peace,<br>
+and my forever.<br><br>
 
 Happy Anniversary ❤️
 </p>
 
-<button onclick="nextScreen(3)">See Our Journey</button>
+<button onclick="nextScreen(3)">See Our Memories</button>
 
 </div>
 
-<!-- SCREEN 3 PHOTOBOOTH -->
+<!-- ===== COLLAGE SCREEN ===== -->
 
 <div class="screen" id="screen3">
 
-<h1>Our Journey Through The Years ❤️</h1>
+<h1>Us Through The Years ❤️</h1>
 
-<div class="photostrip-container">
+<div class="collage">
 
-<div class="photostrip">
+<div class="photo photo1">
 <img src="photo1.jpeg">
-<div class="caption">Our first selfie together ❤️</div>
+<span>Our first selfie together ❤️</span>
 </div>
 
-<div class="photostrip">
+<div class="photo photo2">
 <img src="photo2.jpeg">
-<div class="caption">2022 ❤️</div>
+<span>2022 ❤️</span>
 </div>
 
-<div class="photostrip">
+<div class="photo photo3">
 <img src="photo3.jpeg">
-<div class="caption">2023 ❤️</div>
+<span>2023 ❤️</span>
 </div>
 
-<div class="photostrip">
+<div class="photo photo4">
 <img src="photo4.jpeg">
-<div class="caption">2024 ❤️</div>
+<span>2024 ❤️</span>
 </div>
 
-<div class="photostrip">
+<div class="photo photo5">
 <img src="photo5.jpeg">
-<div class="caption">2025 ❤️</div>
+<span>2025 ❤️</span>
 </div>
 
-<div class="photostrip">
+<div class="photo photo6">
 <img src="photo6.jpeg">
-<div class="caption">2026 ❤️</div>
+<span>2026 ❤️</span>
 </div>
 
 </div>
@@ -230,35 +263,35 @@ Happy Anniversary ❤️
 
 </div>
 
-<!-- SCREEN 4 FINAL -->
+<!-- ===== FINAL SCREEN ===== -->
 
 <div class="screen" id="screen4">
 
 <h1>Forever With You ❤️</h1>
 
 <p>
-Through every year,
-every memory,
-every moment…
+Through every year,<br>
+every memory,<br>
+every moment…<br><br>
 
 I will always love you.
-
-Forever and always ❤️
 </p>
 
 </div>
 
 <script>
 
+/* screen navigation */
+
 let musicStarted=false;
 
 function nextScreen(num){
 
-document.querySelectorAll(".screen").forEach(s=>{
-s.classList.remove("active");
-});
+document.querySelectorAll(".screen")
+.forEach(s=>s.classList.remove("active"));
 
-document.getElementById("screen"+num).classList.add("active");
+document.getElementById("screen"+num)
+.classList.add("active");
 
 if(!musicStarted){
 document.getElementById("music").play();
@@ -267,12 +300,16 @@ musicStarted=true;
 
 }
 
+/* theme toggle */
+
 function toggleTheme(){
 
 document.body.classList.toggle("dark");
 document.body.classList.toggle("light");
 
 }
+
+/* floating hearts */
 
 function createHeart(){
 
@@ -282,13 +319,11 @@ heart.className="heart";
 heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+10)+"px";
+heart.style.fontSize=(Math.random()*25+10)+"px";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{
-heart.remove();
-},6000);
+setTimeout(()=>heart.remove(),6000);
 
 }
 
@@ -298,4 +333,3 @@ setInterval(createHeart,400);
 
 </body>
 </html>
-
