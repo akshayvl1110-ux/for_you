@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f0a1f">
+
 <title>Happy Anniversary ❤️</title>
 
 <style>
 
-/* Reset */
+/* RESET */
 
 *{
 margin:0;
@@ -16,16 +19,16 @@ box-sizing:border-box;
 font-family:'Segoe UI',sans-serif;
 }
 
-/* Romantic bright + dark gradient */
+/* DARK ROMANTIC BACKGROUND */
 
 body{
 height:100vh;
 overflow:hidden;
-background: linear-gradient(135deg,#140a26,#ff0f5b,#2b0a3d);
-color:white;
+background: linear-gradient(135deg,#0b0617,#1a0f2e,#140a26);
+color:#e6e6e6;
 }
 
-/* Screen layout */
+/* SCREEN LAYOUT */
 
 .screen{
 position:absolute;
@@ -35,77 +38,101 @@ display:flex;
 justify-content:center;
 align-items:center;
 padding:20px;
+transition:opacity 0.5s ease;
 }
 
 .hidden{
-display:none;
+opacity:0;
+pointer-events:none;
 }
 
-/* Card */
+/* CARD */
 
 .card{
-background: rgba(0,0,0,0.45);
-backdrop-filter: blur(12px);
-border-radius:20px;
-padding:25px;
+background: rgba(20,15,35,0.85);
+border-radius:18px;
+padding:24px;
 width:100%;
 max-width:420px;
 text-align:center;
-box-shadow:0 0 30px rgba(255,0,100,0.6);
+box-shadow:0 0 25px rgba(0,0,0,0.6);
 }
 
-/* Heading */
+/* TEXT */
 
 h1{
-font-size:28px;
+font-size:26px;
 margin-bottom:15px;
+color:#ffffff;
 }
 
 p{
-font-size:16px;
+font-size:15px;
 line-height:1.6;
+color:#cfcfe6;
 }
 
-/* Buttons */
+/* BUTTON */
 
 button{
 margin-top:20px;
-padding:12px 25px;
+padding:12px;
 border:none;
-border-radius:30px;
-font-size:16px;
-background: linear-gradient(45deg,#ff0f5b,#ff7aa2);
+border-radius:25px;
+font-size:15px;
+background:#2a1f47;
 color:white;
 cursor:pointer;
 width:100%;
-max-width:250px;
 }
 
-/* Photo booth grid */
+button:hover{
+background:#3a2a66;
+}
+
+/* PHOTO COLLAGE */
 
 .photogrid{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:10px;
+gap:12px;
 margin-top:15px;
 }
 
-/* Images */
+/* PHOTO CARD */
 
 .photo{
-background:white;
-padding:6px;
-border-radius:10px;
-color:black;
-font-size:12px;
+background:#0f0a1f;
+border-radius:12px;
+padding:8px;
+text-align:center;
 }
 
-.photo img{
+/* FIXED COLLAGE FRAME */
+
+.photo-frame{
 width:100%;
-border-radius:6px;
+aspect-ratio:3/4;
+overflow:hidden;
+border-radius:8px;
+margin-bottom:6px;
 }
 
-/* Mobile optimization */
+.photo-frame img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+}
+
+/* CAPTION */
+
+.caption{
+font-size:12px;
+color:#b8b8d4;
+}
+
+/* MOBILE OPTIMIZATION */
 
 @media (max-width:480px){
 
@@ -114,26 +141,27 @@ padding:20px;
 }
 
 h1{
-font-size:24px;
+font-size:22px;
 }
 
 p{
-font-size:15px;
+font-size:14px;
 }
 
 }
 
 </style>
+
 </head>
 <body>
 
-<!-- Music -->
+<!-- MUSIC -->
 
-<audio autoplay loop>
+<audio id="music" loop>
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Welcome Screen -->
+<!-- WELCOME SCREEN -->
 
 <div id="welcome" class="screen">
 
@@ -141,100 +169,133 @@ font-size:15px;
 
 <h1>Happy Anniversary ❤️</h1>
 
-<p>I made something special for you</p>
+<p>This is for you</p>
 
-<button onclick="next('welcome','letter')">Open</button>
+<button onclick="nextScreen('welcome','letter')">
+Open
+</button>
 
 </div>
 
 </div>
 
-<!-- Letter Screen -->
+<!-- LETTER SCREEN -->
 
 <div id="letter" class="screen hidden">
 
 <div class="card">
 
-<h1>My Love Letter ❤️</h1>
+<h1>My Love Letter</h1>
 
 <p>
 
-Happy Anniversary my love ❤️<br><br>
+From our first selfie to every year we've shared,<br><br>
 
-From our first selfie to every year we've spent together,<br>
-you have been my happiness, my strength, and my forever.<br><br>
+You have been my peace,<br>
+my happiness,<br>
+and my forever.<br><br>
 
-Every moment with you is my favorite memory.
+Every moment with you is a memory I treasure.
 
 </p>
 
-<button onclick="next('letter','photos')">See Our Memories</button>
+<button onclick="nextScreen('letter','photos')">
+Our Memories
+</button>
 
 </div>
 
 </div>
 
-<!-- Photo Booth Screen -->
+<!-- PHOTO BOOTH SCREEN -->
 
 <div id="photos" class="screen hidden">
 
 <div class="card">
 
-<h1>Our Photo Booth 📸</h1>
+<h1>Our Story</h1>
 
 <div class="photogrid">
 
 <div class="photo">
+<div class="photo-frame">
 <img src="photo1.jpeg">
+</div>
+<div class="caption">
 Photo 1 is our first selfie together
 </div>
+</div>
 
 <div class="photo">
+<div class="photo-frame">
 <img src="photo2.jpeg">
+</div>
+<div class="caption">
 Photo 2 is 2022
 </div>
+</div>
 
 <div class="photo">
+<div class="photo-frame">
 <img src="photo3.jpeg">
+</div>
+<div class="caption">
 Photo 3 is 2023
 </div>
+</div>
 
 <div class="photo">
+<div class="photo-frame">
 <img src="photo4.jpeg">
+</div>
+<div class="caption">
 Photo 4 is 2024
 </div>
+</div>
 
 <div class="photo">
+<div class="photo-frame">
 <img src="photo5.jpeg">
+</div>
+<div class="caption">
 Photo 5 is 2025
 </div>
+</div>
 
 <div class="photo">
+<div class="photo-frame">
 <img src="photo6.jpeg">
+</div>
+<div class="caption">
 Photo 6 is 2026
 </div>
-
-</div>
-
-<button onclick="next('photos','final')">Final Surprise ❤️</button>
-
 </div>
 
 </div>
 
-<!-- Final Screen -->
+<button onclick="nextScreen('photos','final')">
+Final Message
+</button>
+
+</div>
+
+</div>
+
+<!-- FINAL SCREEN -->
 
 <div id="final" class="screen hidden">
 
 <div class="card">
 
-<h1>I Love You ❤️</h1>
+<h1>I Love You</h1>
 
 <p>
 
-You are my past, my present, and my future.<br><br>
+You are my past,<br>
+my present,<br>
+and my future.<br><br>
 
-Happy Anniversary ❤️
+Happy Anniversary.
 
 </p>
 
@@ -242,15 +303,19 @@ Happy Anniversary ❤️
 
 </div>
 
+<!-- SCRIPT -->
+
 <script>
 
-/* Screen transition */
+const music = document.getElementById("music");
 
-function next(current,next){
+function nextScreen(current,next){
 
 document.getElementById(current).classList.add("hidden");
 
 document.getElementById(next).classList.remove("hidden");
+
+music.play();
 
 }
 
